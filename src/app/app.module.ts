@@ -1,0 +1,27 @@
+import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { ChatDialogComponent } from './components/chat-dialog/chat-dialog.component';
+import { ScrollToBottomDirective } from './directives/scroll-to-bottom.directive';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    ChatDialogComponent,
+    ScrollToBottomDirective
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }

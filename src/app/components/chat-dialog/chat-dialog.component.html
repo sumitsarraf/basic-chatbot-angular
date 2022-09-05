@@ -1,0 +1,39 @@
+<div class="main">
+  <div class="title">Chatbot</div>
+  <div class="content" #scrollMe [scrollTop]="scrollMe.scrollHeight">
+    <div>
+      <ng-container *ngFor="let message of messages | async">
+        <div
+          class="message"
+          [ngClass]="{from: message.sentBy === 'bot',to: message.sentBy === 'user'}"
+        >
+          <ng-container *ngIf="message.sentBy === 'bot'">
+            <img [src]="botImage" alt="Bot" class="imgchat" />
+          </ng-container>
+          {{ message.content }}
+          <ng-container *ngIf="message.sentBy === 'user'">
+            <img [src]="userImage" alt="User" class="imgchat" />
+          </ng-container>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
+  <div class="write">
+    <div class="left">
+      <input [(ngModel)]="formValue"
+      tabindex="1"
+        (keyup.enter)="formValue && sendMessage()"
+        type="text"
+        placeholder="Please enter your query here"
+      />
+    </div>
+    <div class="right">
+      <button
+      tabindex="2"
+       class="btn btn-danger" (click)="formValue && sendMessage()">
+        <b>Send</b>
+      </button>
+    </div>
+  </div>
+</div>
